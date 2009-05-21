@@ -1,0 +1,23 @@
+<div class="adminPadding">
+	<h1>Users</h1>
+	<table width="80%" cellpadding="2" cellspacing="0" class="adminFont">
+		<% count = 1 %>
+	<% @users.sort_by{|u| u.last_name }.each do |user| %>
+		<tr class="row<%= count %>">
+			<td width="30%"><%= user.login %></td>
+			<td width="30%"><%= user.last_name %>, <%= user.first_name %></td>
+			<td width="20%"><%= role_for_user(user.role_id) %></td>
+			<td width="20%">
+				<%= link_to "Edit", edit_admin_user_path(user) %>
+			</td>
+			<% if current_user.admin? %>
+				<% if user.coaches.blank? && user.facilitators.blank? %>
+					<td width="15%"><%= link_to "Delete", admin_user_path(user), :confirm => "Are you sure?", :method => :delete %></td>
+				<% end %>
+			<% end %>
+		</tr>
+		<% count = 1 - count %>
+	<% end %>
+	</table>
+	<%= link_to "Create", new_admin_user_path %><br/><br/>
+</div>

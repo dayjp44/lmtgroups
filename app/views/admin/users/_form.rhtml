@@ -1,0 +1,57 @@
+
+<p><label for="login">Login</label><br/>
+<%= text_field :user, :login %></p>
+
+<p><label for="email">Email</label><br/>
+<%= text_field :user, :email %></p>
+
+<p><label for="password">Password</label><br/>
+<%= password_field :user, :password %></p>
+
+<p><label for="password_confirmation">Confirm Password</label><br/>
+<%= password_field :user, :password_confirmation %></p>
+
+<p><label for="first_name">First Name</label><br/>
+<%= text_field :user, :first_name %></p>
+
+<p><label for="last_name">Last Name</label><br/>
+<%= text_field :user, :last_name %></p>
+
+<p><label for="address_1">Address 1</label><br/>
+<%= text_field :user, :address_1 %></p>
+
+<p><label for="address_2">Address 2</label><br/>
+<%= text_field :user, :address_2 %></p>
+
+<p><label for="city">City</label><br/>
+<%= text_field :user, :city %></p>
+
+<p><label for="state">State</label><br/>
+<%= text_field :user, :state %></p>
+
+<p><label for="zip">Zip</label><br/>
+<%= text_field :user, :zip %></p>
+
+<p><label for="phone">Phone</label><br/>
+<%= text_field :user, :phone %></p>
+
+<p><label for="country">Country</label><br/>
+<%= text_field :user, :country %></p>
+
+<%# if current_user.admin? %>
+<p><label for="role">Role</label><br/>
+<% @roles = Role.find :all %>
+<select id="user_role_id" name="user[role_id]">
+	<% @roles.each do |r| %>
+		<% if @user.nil? %>
+			<option value="<%= r.id %>"><%= r.rolename %></option>
+		<% else %>
+			<% if @user.role_id == r.id %>
+				<option selected="selected" value="<%= r.id %>"><%= r.rolename %></option>
+			<% else %>
+				<option value="<%= r.id %>"><%= r.rolename %></option>
+			<% end %>
+		<% end %>
+	<% end %>
+</select>
+<%# end %>

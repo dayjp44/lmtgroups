@@ -1,0 +1,46 @@
+<div class="adminPadding clearfix">
+	<h1>Members for <%= @facilitator.first_name %> <%= @facilitator.last_name %></h1>
+	<%= link_to "reports for #{@facilitator.last_name}", member_reports_admin_facilitator_path(@facilitator) %><br/><br/>
+	<div class="clearfix memberlist" style="margin-right:10px;">
+		<div class="facilitatorlistheader">
+			Assigned Members
+		</div>
+		<div class="clearfix facilitatorlistbody" id="assigned_members">
+			<%= render :partial => "assigned_members", :locals => { :facilitator => @facilitator }%>
+		</div>
+	</div>
+	<div class="clearfix memberlist">
+		<div class="facilitatorlistheader">
+			All Members
+		</div>
+		<div class="clearfix facilitatorlistbody">
+			<div style="margin:5px 0px 5px;">
+				<form action="/admin/facilitators/members/<%= @facilitator.id %>" method="post">
+					<span style="font-weight:bold;font-size:14px;">Search:</span> <input type="text" name="search"> <%= submit_tag "search" %>
+				</form>
+				<br/>
+				<%= link_to "refresh page", members_admin_facilitator_path %>
+			</div>
+			<%= will_paginate @members, :class => "pagination" %>
+			<table width="100%" cellpadding="2" cellspacing="0" border="0" class="adminFont">
+			<% row_count = 1 %>
+			<% @members.sort_by{|mem| mem.last_name }.each do |m| %>
+				<% unless m.inactive? %>
+					<tr class="row<%= row_count %>">
+						<td width="55%"><%= m.last_name %>, <%= m.first_name %></td>
+						<td width="15%"><%= facilitator(m.user_id) %></td>
+						<td width="15%"><%= m.status %></td>
+						<td width="15%">
+							<% if m.user_id.nil? || m.user_id.blank? %>
+								<%= link_to_remote "Assign", :url => assign_member_admin_facilitator_path(@facilitator, :member_id => m.id) %>
+							<% end %>
+						</td>
+					</tr>
+				<% row_count = 1 - row_count %>
+				<% end %>
+			<% end %>
+			</table>
+		</div>
+		<%= will_paginate @members, :class => "pagination" %>
+	</div>
+</div>

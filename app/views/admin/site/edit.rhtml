@@ -1,0 +1,9 @@
+<%# if current_user.admin? %>
+	<div class="adminPadding adminFont">
+		<%= error_messages_for :site %>
+		<% form_for :site, @site, :url => admin_site_path, :html => { :method => :put } do |f| -%>
+			<%= render :partial => f %>
+			<p><%= submit_tag 'Update' %></p>
+		<% end -%>
+	</div>
+<%# end %>

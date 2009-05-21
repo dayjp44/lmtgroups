@@ -1,0 +1,19 @@
+<div class="adminPadding">
+	<h1>Roles</h1>
+	<% count = 1 %>
+	<table width="70%" cellpadding="2" cellspacing="0" class="adminFont">
+	<% for role in @roles %>
+		<tr class="row<%= count %>">
+			<td width="55%"><%= role.rolename %></td>
+			<%# if current_user.admin? %>
+				<td width="10%"><%= link_to "Edit", edit_admin_role_path(role) %></td>
+				<td width="20%"><%= link_to "Permissions", permissions_admin_role_path(role) %></td>
+				<td width="15%"><%= link_to "Delete", admin_role_path(role), :confirm => "Are you sure?", :method => :delete %></td>
+			<%# end %>
+		</tr>
+		<% count = 1 - count %>
+	<% end %>
+	</table>
+	<br/><br/>
+	<%= link_to "Create", new_admin_role_path %>
+</div>

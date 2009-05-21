@@ -1,0 +1,11 @@
+<% unless facilitator.notes.blank? %>
+	<% facilitator.notes.each do |n| %>
+	<div class="adminTopMargin adminBorder clearfix" style="padding:10px;" id="notes_<%= n.id %>">
+		<div style="width:100px;float:right;text-align:right;">
+			<%= link_to_remote "edit", :url => edit_notes_admin_coach_path(n) %> | <%= link_to_remote "delete", :url => delete_notes_admin_coach_path(n, :facilitator_id => facilitator.id) %></div>
+		<br class="brclear"/>
+		<div style="font-weight:bold;">Date: <%= n.created_at.strftime("%m-%d-%Y") %></div>
+		<%= render :partial => "note", :locals => { :note => n } %>
+	</div>
+	<% end %>
+<% end %>

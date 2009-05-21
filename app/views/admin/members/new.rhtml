@@ -1,0 +1,8 @@
+<div class="adminPadding adminFont">
+	<h1>Create Member</h1>
+	<%= error_messages_for :member %>
+	<% form_for :member, :url => admin_members_path do |f| -%>
+		<%= render :partial => f %>
+	<p><%= submit_tag 'create' %></p>
+	<% end -%>
+</div>

@@ -1,0 +1,27 @@
+<div class="adminPadding clearfix">
+	<h3>Group Roster</h3>
+	<%= link_to "reports for #{@facilitator.last_name}", member_reports_admin_facilitator_path(@facilitator) %> |
+	<%= link_to "grading reports", grading_admin_coach_path(@facilitator) %><br/><br/>
+	<br/><br/>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td style="font-weight:bold;">Member</td>
+			<td style="font-weight:bold;">Status</td>
+		</tr>
+		<% row_count = 1 %>
+		<% @facilitator.members.sort_by{|f| f.last_name }.each do |m| %>
+			<tr class="row<%= row_count %>">
+				<td width="50%"><%= m.last_name %>, <%= m.first_name %></td>
+				<td><%= m.status %></td>
+			</tr>
+			<% row_count = 1 - row_count %>
+		<% end %>
+	</table>
+
+	<h3>Notes on <%= @facilitator.first_name %> <%= @facilitator.last_name %>'s Group</h3>
+	<div><%= link_to_remote 'add notes', :url => add_notes_admin_coach_path(@facilitator) %></div>
+	<div id="add_note" class="adminTopMargin"></div>
+	<div id="notes" class="adminTopMargin">
+		<%= render :partial => "notes", :locals => { :facilitator => @facilitator } %>
+	</div>
+</div>

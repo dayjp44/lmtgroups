@@ -1,0 +1,17 @@
+<div class="adminPadding">
+	<h1>Facilitators</h1>
+	<%= flash[:notice] %>
+	<table width="100%" cellpadding="5" cellspacing="0" border="0" class="adminBigFont">
+		<% count = 1 %>
+		<% @facilitators.sort_by{|facilitator| facilitator.last_name }.each do |f| %>
+		<tr class="row<%= count %>">
+			<% if f.last_name == "Casselman" %>
+				<td><%= link_to "#{f.last_name}, #{f.first_name.slice(0,1)}", members_admin_facilitator_path(f) %></td>
+			<% else %>
+			<td><%= link_to "#{f.last_name}", members_admin_facilitator_path(f) %></td>
+			<% end %>
+		</tr>
+		<% count = 1 - count %>
+		<% end %>
+	</table>
+</div>

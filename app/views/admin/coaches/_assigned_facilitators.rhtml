@@ -1,0 +1,15 @@
+<% row_count = 1 %>
+<table width="100%" cellpadding="2" cellspacing="0" border="0" class="adminFont">
+<% coach.facilitators.sort_by{|fac| fac.last_name}.each do |f| %>
+	<tr class="row<%= row_count %>">
+		<td width="40%"><%= link_to "#{f.last_name}, #{f.first_name}", notes_admin_coach_path(f) %></td>
+		<td width="50%">
+			<div id="status_<%= f.id %>">
+				<%= render :partial => "status", :locals => { :status => f.status.blank? ? "no status" : f.status, :facilitator => f }%>
+			</div>
+		</td>
+		<td width="10%"><%= link_to_remote "Unassign", :url => unassign_facilitator_admin_coach_path(coach, :facilitator_id => f.id) %></td>
+	</tr>
+	<% row_count = 1 - row_count %>
+<% end %>
+</table>

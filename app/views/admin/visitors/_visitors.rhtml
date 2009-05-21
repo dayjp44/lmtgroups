@@ -1,0 +1,5 @@
+<% visitors.each do |v| %>
+	<div class="<%= cycle('row1', 'row0') %>">
+		<%= v.first_name %> <%= v.last_name %> <%= v.zip %> <%= v.status %>
+	</div>
+<% end %>

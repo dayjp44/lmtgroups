@@ -1,0 +1,11 @@
+<div class="sitePadding clearfix">
+	<div><%= link_to "Home", site_index_path %></div>
+	<div><%= flash[:notice] %></div>
+	<h1>Attendance Reports for <%= @facilitator.first_name %> <%= @facilitator.last_name %></h1>
+	<div style="margin-bottom:5px;text-align:center;">
+		<%= link_to 'Create Report', report_new_site_path %>
+	</div>
+	<div id="attendance_report_list">
+		<%= render :partial => 'attendance_report_list', :locals => { :facilitator => @facilitator } %>
+	</div>
+</div>

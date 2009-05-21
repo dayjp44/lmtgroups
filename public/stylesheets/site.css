@@ -1,0 +1,205 @@
+html, body, ol, ul, li, dl, dt, dd, img {
+  	margin: 0; 
+  	padding: 0;
+  	border: 0;
+	list-style: none;
+}
+
+div {
+	text-align:left;
+}
+
+table {
+	font-size:12px;
+}
+body { /* this is the entire page */
+	padding-top:10px;
+  	font-family: Arial, verdana, sans-serif; 
+  	font-size: 12px; /* this body font-size fixes an IE bug and maintains x-browser uniformity */ 
+	margin:0px auto;
+}
+
+#container { /* this is the holder for the page content */
+    width: 800px;
+    border: 2px solid #ffcc66;
+    background-color: #fffff0;
+    padding: 3px; /* pad the content a little */
+    margin: 0px auto; /* this centers the container */
+}
+#header { /* this affects the whole header */
+	border:1px solid #ffe6ab;
+}
+
+#footer {
+	border:1px solid #ffe6ab;
+}
+
+/**************** Utility Rules *******************/
+
+/*\*/ /*/
+.sidenav a:hover {position: relative;}
+/* this fixes an IEmac hover bug in the left column, hidden from other browsers */
+
+
+.brclear { /* Use a break with this class to clear float containers */
+   clear:both;
+   height:0px;
+   margin:0px;
+   font-size: 1px;
+   line-height: 0px;
+}
+.brclearright { /* Use a break with this class to clear right float containers */
+   clear:right;
+   height:0px;
+   margin:0px;
+   font-size: 1px;
+   line-height: 0px;
+}
+.brclearleft { /* Use a break with this class to clear left float containers */
+   clear:left;
+   height:0px;
+   margin:0px;
+   font-size: 1px;
+   line-height: 0px;
+}
+
+.clearfix:after {
+     content: ".";
+     display: block;
+     height: 0;
+     clear: both;
+     visibility: hidden;
+}
+
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+/**************** Page Rules *******************/
+
+.sitePadding {
+	padding:20px;
+}
+
+.titlelink {
+	text-decoration:none;
+	color:black;
+}
+.indexBorder {
+	border:1px solid #ffe6ab;
+}
+
+.row1 {
+	background-color:#ffe6ab;
+}
+
+.viewStrong {
+	font-weight:bold;
+}
+
+.grouproster {
+	width:350px;
+	float:left;
+	margin-right:10px;
+	border:1px solid #ffe6ab;
+}
+
+.grouprosterheader {
+	height:25px;
+	font-weight:bold;
+	font-size:14px;
+	background-color:#ffe6ab;
+}
+
+.grouprosterheaderpadding {
+	padding:5px 0px 0px 10px;
+}
+
+.emailarea {
+	width:370px;
+	float:left;
+	border:1px solid #ffe6ab;
+}
+
+.emailareaheader {
+	height:25px;
+	_width:372px;
+	font-weight:bold;
+	font-size:14px;
+	background-color:#ffe6ab;	
+}
+.emailareapadding {
+	padding:5px 0px 0px 10px;	
+}
+
+.profile {
+	width:100%;
+	text-align:right;
+	padding-right:10px;
+	margin-bottom:10px;
+}
+
+.notice {
+	font-size:14px;
+	color:red;
+}
+/**************** Admin Pages *******************/
+
+.adminPadding {
+	padding:20px;
+}
+
+.adminCenterHeader {
+	text-align:center;
+}
+
+.adminTopMargin {
+	margin-top:10px;
+}
+
+.adminErrorMessages {
+	color:red;
+}
+
+.adminBorder {
+	border:1px solid #ffcc66;
+}
+
+.adminBold {
+	font-weight:bold;
+}
+.adminFont {
+	font-size:12px;
+}
+
+.adminBigFont {
+	font-size:16px;
+	font-weight:bold;
+}
+
+.facilitatorlistleft {
+	width:470px;
+	float:left;
+	border:1px solid #ffcc66;
+	margin-right:10px;
+}
+
+.facilitatorlistright {
+	width:250px;
+	float:left;
+	border:1px solid #ffcc66;
+}
+
+.facilitatorlistheader {
+	padding:5px 0px 5px 10px;
+	background-color:#FFCC66;
+}
+
+.memberlist {
+	width:360px;
+	float:left;
+	border:1px solid #ffcc66;
+}

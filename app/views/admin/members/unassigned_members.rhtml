@@ -1,0 +1,27 @@
+<div class="adminPadding clearfix">
+	<h1>Unassigned Members</h1>
+	<%= link_to "back to members", admin_members_path %><br/><br/>
+	<% count = 1 %>
+	<table width="100%" cellpadding="0" cellspacing="0" border="0" class="adminfont">
+		<tr style="font-weight:bold;">
+			<td>Member</td>
+			<td>&nbsp;</td>
+		</tr>
+		<% if @members.blank? %>
+		<tr>
+			<td colspan="3">
+				There are no unassigned members.
+			</td>
+		</tr>
+		<% else%>
+			<% @members.sort_by{|mem| mem.last_name}.each do |m| %>
+				<tr class="row<%= count %>">
+					<td><%= m.last_name %>, <%= m.first_name %></td>
+					<td><%= m.status %></td>
+					<td><%= link_to "Delete", admin_member_path(m, :unassigned => true), :method => :delete %></td>
+				</tr>
+				<% count = 1 - count %>
+			<% end %>
+		<% end %>
+	</table>
+</div>

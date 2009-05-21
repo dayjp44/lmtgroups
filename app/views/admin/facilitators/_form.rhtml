@@ -1,0 +1,54 @@
+<p><label for="date_of_meeting">Date of Meeting</label><br/>
+<%= date_select :report, :date_of_meeting, :order => [:day, :month, :year] %></p>
+
+<table width="100%" cellpadding="2" cellspacing="0" border="0">
+	<tr>
+		<td width="30%">&nbsp;</td>
+		<td width="10%"><strong>Present</strong></td>
+		<td width="60%"><strong>Absent</strong></td>
+	</tr>
+	<% row_count = 1 %>
+	<% @facilitator.members.sort_by{|mem| mem.last_name }.each do |m| %>
+	<tr class="row<%= row_count %>">
+		<td><strong><%= m.first_name %> <%= m.last_name %></strong></td>
+		<% if @report %>
+			<% member_status = attendance_status(m.id, @report.id) %>
+			<% if member_status == true %>
+				<td><%= radio_button_tag "member[#{m.id}]", value="1", checked=true %></td>
+				<td><%= radio_button_tag "member[#{m.id}]", value="0", checked=false %></td>
+			<% else %>
+				<td><%= radio_button_tag "member[#{m.id}]", value="1", checked=false %></td>
+				<td><%= radio_button_tag "member[#{m.id}]", value="0", checked=true %></td>
+			<% end %>
+		<% else %>
+			<td><%= radio_button_tag "member[#{m.id}]", value="1", checked=true %></td>
+			<td><%= radio_button_tag "member[#{m.id}]", value="0", checked=false %></td>
+		<% end %>
+	</tr>
+	<% row_count = 1 - row_count %>
+	<% end %>
+</table>
+
+<p><label for="other_attendees_number">Number of Other Attendees</label><br/>
+<%= text_field :report, :other_attendees_number %></p>
+
+<p><label for="other_attendees_names">Names of Other Attendees</label><br/>
+<%= text_field :report, :other_attendees_names %></p>
+
+<p><label for="offering_amount">Offering Amount</label><br/>
+<%= text_field :report, :offering_amount %></p>
+
+<p><label for="meeting_location">Meeting Location</label><br/>
+<%= text_field :report, :meeting_location %></p>
+
+<p><label for="facilitated_by">Facilitated By</label><br/>
+<%= text_field :report, :facilitated_by %></p>
+
+<p><label for="intern">Intern</label><br/>
+<%= text_field :report, :intern %></p>
+
+<p><label for="worship_leader">Worship Leader</label><br/>
+<%= text_field :report, :worship_leader %></p>
+	
+<p><label for="notes">Brief Summary of Meeting</label><br/>
+<%= text_area :report, :notes, :rows => 10, :cols => 60 %></p>

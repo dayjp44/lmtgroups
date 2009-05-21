@@ -1,0 +1,21 @@
+<%= flash[:notice ]%>
+<table width="100%" cellpadding="2" cellspacing="0" border="0" style="border:1px solid #ffcc66;">
+	<tr style="background-color:#ffe6ab;">
+		<td width="5%" style="border-bottom:1px solid #ffcc66;">&nbsp;</td>
+		<td width="5%" style="border-bottom:1px solid #ffcc66;">&nbsp;</td>
+		<td style="border-bottom:1px solid #ffcc66;"><strong>Report Date</strong></td>
+		<td width="10%" style="border-bottom:1px solid #ffcc66;">&nbsp;</td>
+	</tr>
+	<% unless facilitator.reports.blank? %>
+		<% row_count = 0 %>
+		<% facilitator.reports.each do |r| %>
+			<tr class="row<%= row_count %>">
+				<td><%= link_to 'edit', "/site/report_edit/#{r.id}?facilitator_id=#{facilitator.id}" %></td>
+				<td><%= link_to 'view', report_view_site_path(r, :facilitator_id => facilitator.id)%></td>
+				<td><%= r.date_of_meeting.strftime("%m-%d-%Y") %></td>
+				<td><%= link_to "delete", report_delete_site_path(r, :facilitator_id => facilitator.id), :confirm => "Are you sure?" %></td>
+			</tr>
+			<% row_count = 1 - row_count %>
+		<% end %>
+	<% end %>
+</table>

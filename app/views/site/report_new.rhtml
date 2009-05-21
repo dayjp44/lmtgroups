@@ -1,0 +1,10 @@
+<div class="sitePadding siteFont" style="text-align:left;">
+	<div style="color:red;font-size:14px;"><%= flash[:notice] %></div>
+	<div><%= link_to "Attendance Reports", attendance_report_site_path(@facilitator)  %></div>
+	<h1>Create Report</h1>
+	<%= error_messages_for :report %>
+	<% form_for :report, :url => report_create_site_path do |f| -%>
+		<%= render :partial => f %>
+	<p><%= submit_tag 'create' %></p>
+	<% end -%>
+</div>

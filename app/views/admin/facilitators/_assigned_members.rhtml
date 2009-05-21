@@ -1,0 +1,11 @@
+<% row_count = 1 %>
+<table width="100%" cellpadding="2" cellspacing="0" border="0" class="adminFont">
+<% facilitator.members.sort_by{|mem| mem.last_name}.each do |m| %>
+	<tr class="row<%= row_count %>">
+		<td width="70%"><%= m.last_name %>, <%= m.first_name %></td>
+		<td width="15%"><%= m.status %></td>
+		<td width="15%"><%= link_to_remote "Unassign", :url => unassign_member_admin_facilitator_path(facilitator, :member_id => m.id) %></td>
+	</tr>
+	<% row_count = 1 - row_count %>
+<% end %>
+</table>

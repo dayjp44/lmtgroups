@@ -1,0 +1,19 @@
+<div class="clearfix" style="text-align:center;`">
+		<h1><%= link_to "LMT Groups", admin_coaches_path, :class => "titlelink" %></h1>
+		<div class="adminPadding" style="text-align:center;">
+			  <%= link_to "users", admin_users_path %>
+				| <%= link_to "coaches", admin_coaches_path %>
+				| <%= link_to "facilitators", admin_facilitators_path %>
+				| <%= link_to "members", admin_members_path %>
+				| <%= link_to "visitors", admin_visitors_path %>
+				<%#= link_to "reports", admin_reports_path %> 
+				<% if current_user.admin? %>
+					| <%= link_to "roles", admin_roles_path %>
+					| <%= link_to "permissions", admin_permissions_path %>
+					| <%= link_to "site configuration", admin_site_index_path %>
+				<% end %>
+		</div>
+		<div style="padding:10px;width:250px;float:right;text-align:right;">
+			<%= link_to "Logout", sessions_path, :confirm => "Are you sure?", :method => :delete %>
+		</div>
+</div>

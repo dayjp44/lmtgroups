@@ -1,0 +1,51 @@
+<%= @message %><br/>
+<h3>Report Details</h3>
+<table width="100%" border="1" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="25%">Meeting Date:</td>
+		<td><%= @report.date_of_meeting %></td>
+	</tr>
+	<% @report.report_details.each do |r| %>
+		<% member = Member.find r.member_id%>
+		<tr>
+			<td><%= member.first_name %> <%= member.last_name %>: </td>
+			<td><%= r.status? ? "Present" : "Absent" %></td>
+		</tr>
+	<% end %>
+	<tr>
+		<td>Number of Other Attendees:</td>
+		<td><%= @report.other_attendees_number %></td>
+	</tr>
+	<tr>
+		<td>Names of other Attendees:</td>
+		<td><%= @report.other_attendees_names %></td>
+	</tr>
+	<tr>
+		<td>Total Present:</td>
+		<td><%= @report.total_present %></td>
+	</tr>
+	<tr>
+		<td>Offering Amount:</td>
+		<td><%= @report.offering_amount %></td>
+	</tr>
+	<tr>
+		<td>Meeting Location</td>
+		<td><%= @report.meeting_location %></td>
+	</tr>
+	<tr>
+		<td>Facilitated By</td>
+		<td><%= @report.facilitated_by %></td>
+	</tr>
+	<tr>
+		<td>Intern</td>
+		<td><%= @report.intern %></td>
+	</tr>
+	<tr>
+		<td>Worship Leader</td>
+		<td><%= @report.worship_leader %></td>
+	</tr>
+	<tr>
+		<td>Brief Summary</td>
+		<td><%= @report.notes %></td>
+	</tr>
+</table>

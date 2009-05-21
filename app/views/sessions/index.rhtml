@@ -1,0 +1,33 @@
+<div style="color:red;width:100%;text-align:center;"><%= flash[:notice] %></div>
+<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
+	<tr>
+		<td align="left">
+			<div style="margin-left:10px;">
+				<a href="/pdf/lmtgroups_user_guide.pdf" style="font-size:14px;font-weight:bold;">Download LMTGroups.com User Guide</a><br/>
+				Note:  Please be sure to download and read this guide<br/> in order to login properly for the first time.
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" align="center">
+			<% form_tag sessions_path do -%>
+			<p><label for="login">Login</label><br/>
+			<%= text_field_tag 'login' %></p>
+
+			<p><label for="password">Password</label><br/>
+			<%= password_field_tag 'password' %></p>
+
+			<!-- Uncomment this if you want this functionality
+			<p><label for="remember_me">Remember me:</label>
+			<%= check_box_tag 'remember_me' %></p>
+			-->
+
+			<p><%= submit_tag 'Log in' %></p>
+			<% end -%>
+		</td>
+	</tr>
+</table>
+<div style="text-align:center;">
+	<%= link_to_remote 'recover password', :url => recover_password_sessions_path %>
+	<div id="recover_password"></div>
+</div>

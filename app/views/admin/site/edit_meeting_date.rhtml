@@ -1,0 +1,7 @@
+<div class="adminPadding">
+	<h1>Edit Meeting Date</h1>
+	<% form_for :meeting_date, :url => "/admin/site/edit_meeting_date/#{@meeting_date.id}" do |f| -%>
+		<%= f.date_select :meeting_date %>
+		<%= submit_tag "update" %>
+	<% end -%>
+</div>

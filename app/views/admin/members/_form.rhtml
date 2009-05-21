@@ -1,0 +1,24 @@
+<p><label for="first_name">First Name</label><br/>
+<%= text_field :member, :first_name %></p>
+
+<p><label for="last_name">Last Name</label><br/>
+<%= text_field :member, :last_name %></p>
+
+<p><label for="status">Status</label><br/>
+<%= select :member, :status, ["intern", "child", "youth", "visitor"], :include_blank => true %></p>
+
+<p><label for="zip">Zip</label><br/>
+<%= text_field :member, :zip %></p>
+
+<p><label for="sex">Sex</label><br/>
+<%= select :member, :sex, ["male", "female"], :include_blank => true %></p>
+
+<p><label for="status">Assign To</label><br/>
+<select id="member_user_id" name="member[user_id]">
+	<option></option>
+	<% role = Role.find_by_rolename("Facilitator")
+  facilitators = User.find_all_by_role_id(role.id)
+	facilitators.sort_by{|fac| fac.last_name }.each do |f| %>
+		<option value="<%= f.id %>"><%= f.last_name %></option>
+	<% end %>
+</select>

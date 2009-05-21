@@ -1,0 +1,8 @@
+<div class="adminPadding">
+	<h1>Meeting Dates</h1>
+	<%= link_to_remote 'create meeting dates', :url => create_meeting_dates_admin_site_path(@site) %>
+	<div id="meeting_date"></div>
+	<div id="meeting_dates">
+		<%= render :partial => "meeting_dates", :locals => { :site => @site }%>
+	</div>
+</div>

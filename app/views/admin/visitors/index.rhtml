@@ -1,0 +1,19 @@
+<div class="adminPadding">
+	<h1>Visitors</h1>
+
+	<div>
+		<h3>Add Visitor</h3>
+		<%= form_remote_tag :url => admin_visitors_path %>
+			<%= render :partial => "form", :locals => { :visitor => @visitor } %>
+			<%= submit_tag "add" %>			
+		</form>
+	</div>
+	<div>
+		<h3>Visitor list</h3>
+		<div id="visitors">
+			<%= render :partial => "visitors", :locals => { :visitors => @visitors }%>
+		</div>
+		<%= will_paginate(@visitors) %>
+	</div>
+
+</div>

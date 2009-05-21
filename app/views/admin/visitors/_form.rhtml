@@ -1,0 +1,20 @@
+<p><label>First Name</label><br/>
+<%= text_field :member, :first_name %></p>
+
+<p><label>Last Name</label><br/>
+<%= text_field :member, :last_name %></p>
+
+<p><label>Phone</label><br/>
+<%= text_field :member, :phone %></p>
+
+<p><label>Email</label><br/>
+<%= text_field :member, :email %></p>
+
+<p><label>Zip</label><br/>
+<%= text_field :member, :zip, :size => 10 %></p>
+
+<p><label>Sex</label><br/>
+<%= select :member, :sex, ["female", "male"], :include_blank => true %></p>
+
+<p><label>Notes:</label><br/>
+<%= text_area :member, :notes, :rows => 5, :cols => 40 %></p>

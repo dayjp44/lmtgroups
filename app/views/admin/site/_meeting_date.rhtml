@@ -1,0 +1,5 @@
+<div class="sitePadding">
+	<%= form_remote_tag :url => create_meeting_dates_admin_site_path(site) %>
+	  Select Meeting Date: <%= date_select :meeting_date, :meeting_date %> <%= submit_tag "add" %>
+	</form>
+</div>

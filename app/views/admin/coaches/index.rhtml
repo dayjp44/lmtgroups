@@ -1,0 +1,11 @@
+<div class="adminPadding">
+	<h1>Coaches</h1>
+	<%= flash[:notice] %>
+	<table width="80%" cellpadding="0" cellspacing="0" border="0" class="adminFont">
+		<% @coaches.sort_by{|coach| coach.last_name }.each do |c| %>
+		<tr>
+			<td><%= link_to "#{c.last_name}, #{c.first_name}", facilitators_admin_coach_path(c) %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>

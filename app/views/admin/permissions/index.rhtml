@@ -1,0 +1,21 @@
+<div class="adminPadding">
+<h1>Permissions</h1>
+<table width="70%" cellpadding="2" cellspacing="0" class="adminFont">
+	<% count = 1 %>
+	<% @permissions.sort_by{|p| p.controller }.each do |permission| %>
+		<tr class="row<%= count %>">
+			<td><%= permission.controller %>, <%= permission.action %></td>
+			<%# if current_user.admin? %>
+			<td><%= link_to "Edit", edit_admin_permission_path(permission) %></td>
+			<td><%= link_to "Destroy", admin_permission_path(permission), :confirm => "Are you sure?", :method => :delete %></td>
+			<%# end %>
+		</tr>
+		<% count = 1 - count %>
+	<% end %>
+</table>
+
+<%# if current_user.admin? %>
+	<%= link_to "Update All", :controller => "permissions", :action => "refresh_permissions" %>
+	<%= link_to "Create", new_admin_permission_path %><br/><br/>
+<%# end %>
+</div>

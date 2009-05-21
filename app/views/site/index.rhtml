@@ -1,0 +1,39 @@
+<div class="sitePadding clearfix" style="margin:0px 3px 0px 3px;">
+	<%= flash[:notice] %>
+	<div>Welcome, <%= current_user.first_name %></div>
+	<div class="profile clearfix">
+		<%= link_to "My Account", profile_site_path(@facilitator) %> |
+		<%= link_to "Attendance Reports", attendance_report_site_path(@facilitator) %>
+	</div>
+	<div class="grouproster">
+		<div class="grouprosterheader">
+			<div class="grouprosterheaderpadding">
+			Group Roster
+			</div>
+		</div>
+		<div class="grouprosterbody clearfix">
+			<% row_count = 0 %>
+			<table width="100%" cellpadding="3" cellspacing="0" border="0" class="siteFont">
+			<% @facilitator.members.sort_by{|mem| mem.last_name}.each do |m| %>
+				<tr class="row<%= row_count %>">
+					<td width="25%"><%= m.last_name %></td>
+					<td><%= m.first_name %></td>
+				</tr>
+				<% row_count = 1 - row_count %>
+			<% end %>
+			</table>
+		</div>
+	</div>
+	<div class="emailarea">
+		<div class="emailareaheader">
+			<div class="emailareapadding">
+				EMail Your Coach
+			</div>
+		</div>
+		<div class="emailareabody">
+			<div style="padding:3px;" id="email_coach">
+				<%= render :partial => "email_coach", :locals => { :facilitator => @facilitator } %>
+			</div>
+		</div>
+	</div>
+</div>

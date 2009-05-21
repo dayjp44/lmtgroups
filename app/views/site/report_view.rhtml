@@ -1,0 +1,71 @@
+<div class="sitePadding siteFont" style="text-align:left;">
+	<div><%= link_to "Attendance Reports", attendance_report_site_path(@facilitator)  %></div>
+	<h1>View Report for <%= @facilitator.last_name %></h1>
+	<div style="padding:20px;">
+		<table width="70%" cellpadding="7" cellspacing="0" border="0" style="siteFont">
+			<tr>
+				<td width="35%"><strong>Date of Meeting</strong></td>
+				<td><%= @report.date_of_meeting.strftime("%m-%d-%Y")%></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<table width="100%" cellpadding="2" cellspacing="0" border="0">
+						<tr>
+							<td width="30%">&nbsp;</td>
+							<td colspan="2"><strong>Attendance Status</strong></td>
+						</tr>
+						<% row_count = 1 %>
+						<% @facilitator.members.sort_by{|mem| mem.last_name }.each do |m| %>
+						<tr class="row<%= row_count %>">
+							<td><strong><%= m.first_name %> <%= m.last_name %></strong></td>
+							<% member_status = attendance_status(m.id, @report.id) %>
+							<% if member_status == true %>
+								<td colspan="2">Present</td>
+							<% else %>
+							<td colspan="2">Absent</td>
+							<% end %>
+						</tr>
+						<% row_count = 1 - row_count %>
+						<% end %>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td><strong>Number of Other Attendees</strong></td>
+				<td><%= @report.other_attendees_number %></td>
+			</tr>
+			<tr>
+				<td><strong>Names of Other Attendees</strong></td>
+				<td><%= @report.other_attendees_names %></td>
+			</tr>
+			<tr>
+				<td><strong>Total Present</strong></td>
+				<td><%= @report.total_present %></td>
+			</tr>
+			<tr>
+				<td><strong>Offering Amount</strong></td>
+				<td><%= number_to_currency(@report.offering_amount) %></td>
+			</tr>
+			<tr>
+				<td><strong>Meeting Location</strong></td>
+				<td><%= @report.meeting_location %></td>
+			</tr>
+			<tr>
+				<td><strong>Facilitated By</strong></td>
+				<td><%= @report.facilitated_by %></td>
+			</tr>
+			<tr>
+				<td><strong>Intern</strong></td>
+				<td><%= @report.intern %></td>
+			</tr>
+			<tr>
+				<td><strong>Worship Leader</strong></td>
+				<td><%= @report.worship_leader %></td>
+			</tr>
+			<tr>
+				<td valign="top"><strong>Notes</strong></td>
+				<td><%= @report.notes %></td>
+			</tr>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+<% statuses = ["Steady", "Immediate Multiplication", "6 Month Multiplication", "New Group", "Needs Attention"] %>
+<%= form_remote_tag :url => facilitator_status_update_admin_coach_path(facilitator) %>
+	<select id="status" name="status">
+		<% statuses.each do |status| %>
+			<% if status == facilitator.status %>
+				<option value="<%= status %>" selected="selected"><%= status %></option>
+			<% else %>
+				<option value="<%= status %>"><%= status %></option>
+			<% end %>
+		<% end %>
+	</select><br/>
+	<%= submit_tag "update" %>
+</form>

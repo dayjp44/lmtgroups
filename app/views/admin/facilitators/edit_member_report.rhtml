@@ -1,0 +1,8 @@
+<div class="adminPadding clearfix">
+	<h1>Edit Report for <%= @facilitator.last_name %></h1>
+	<%= flash[:notice ]%>
+	<% form_for :report, :url => edit_member_report_admin_facilitator_path(:facilitator_id => @facilitator) do |f| -%>
+		<%= render :partial => f %>
+		<p><%= submit_tag 'Update' %></p>
+	<% end -%>
+</div>
